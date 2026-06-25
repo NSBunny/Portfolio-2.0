@@ -14,9 +14,15 @@ const VideoHero = dynamic(
   { ssr: false }
 );
 
+const CinematicLayer = dynamic(
+  () => import("../components/CinematicLayer/CinematicLayer"),
+  { ssr: false }
+);
+
 export default function Home() {
   return (
     <main>
+      <CinematicLayer />
       <VideoHero />
       <div 
         id="next-section" 

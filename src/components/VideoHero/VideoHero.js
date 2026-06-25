@@ -7,10 +7,6 @@ import HeroContent from "../HeroContent/HeroContent";
 import VideoControls from "../VideoControls/VideoControls";
 import ScrollIndicator from "../ScrollIndicator/ScrollIndicator";
 
-const CinematicLayer = dynamic(
-  () => import("../CinematicLayer/CinematicLayer"),
-  { ssr: false }
-);
 
 export default function VideoHero() {
   const mainVideoRef = useRef(null);
@@ -112,10 +108,6 @@ export default function VideoHero() {
           <div className={styles.vignette} />
         </div>
 
-        {/* Three.js particle layer */}
-        <div className={styles.canvasLayer}>
-          <CinematicLayer />
-        </div>
 
         {/* Content layer */}
         <div className={`${styles.contentLayer} ${styles.contentLayerInteractive}`}>

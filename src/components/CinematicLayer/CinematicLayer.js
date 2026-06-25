@@ -14,8 +14,8 @@ function createParticleTexture() {
 
   const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
   gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
-  gradient.addColorStop(0.2, "rgba(255, 255, 255, 0.8)");
-  gradient.addColorStop(0.4, "rgba(255, 255, 255, 0.3)");
+  gradient.addColorStop(0.4, "rgba(255, 255, 255, 0.9)");
+  gradient.addColorStop(0.7, "rgba(255, 255, 255, 0.2)");
   gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
   ctx.fillStyle = gradient;
@@ -39,8 +39,8 @@ function Particles({ count = 120 }) {
     const offsets = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
-      // Spread particles in a wide area
-      positions[i * 3] = (Math.random() - 0.5) * 16;     // x
+      // Keep particles heavily clustered on the left side
+      positions[i * 3] = (Math.random() - 1.0) * 12;     // x (from -12 to 0)
       positions[i * 3 + 1] = (Math.random() - 0.5) * 10; // y
       positions[i * 3 + 2] = (Math.random() - 0.5) * 8;  // z
 
@@ -63,8 +63,8 @@ function Particles({ count = 120 }) {
         colors[i * 3 + 2] = 0.2 + Math.random() * 0.15;
       }
 
-      // Varied sizes for depth
-      sizes[i] = Math.random() * 3 + 0.5;
+      // Varied sizes for depth (smaller and sharper)
+      sizes[i] = Math.random() * 1.5 + 0.2;
 
       // Random phase offsets for sine-wave animation
       offsets[i] = Math.random() * Math.PI * 2;
@@ -140,11 +140,11 @@ function Particles({ count = 120 }) {
         map={texture}
         vertexColors
         transparent
-        opacity={0.6}
+        opacity={0.7}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
         sizeAttenuation
-        size={2.5}
+        size={1.2}
       />
     </points>
   );
