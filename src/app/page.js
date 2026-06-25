@@ -34,8 +34,8 @@ export default function Home() {
         <WhoAmI />
         <Skills />
         <WorkExperience />
-        <Certificates />
         <Projects />
+        <Certificates />
         <Contact />
       </div>
       <ChatWidget />
