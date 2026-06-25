@@ -15,7 +15,7 @@ const CinematicLayer = dynamic(
 export default function VideoHero() {
   const mainVideoRef = useRef(null);
   const ambientVideoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -49,8 +49,8 @@ export default function VideoHero() {
       mainVideo.pause();
       ambientVideo?.pause();
     } else {
-      mainVideo.play();
-      ambientVideo?.play();
+      mainVideo.play().catch(console.error);
+      ambientVideo?.play().catch(console.error);
     }
     setIsPlaying(!isPlaying);
   }, [isPlaying]);
@@ -82,7 +82,6 @@ export default function VideoHero() {
             className={styles.ambientVideo}
             src="https://res.cloudinary.com/dsjcwxwza/video/upload/q_auto,f_auto/v1782318834/Video_Project_7_prjhui.mp4"
             poster="https://res.cloudinary.com/dsjcwxwza/video/upload/so_0/v1782318834/Video_Project_7_prjhui.jpg"
-            autoPlay
             muted
             playsInline
             preload="auto"
@@ -97,7 +96,6 @@ export default function VideoHero() {
             className={styles.mainVideo}
             src="https://res.cloudinary.com/dsjcwxwza/video/upload/q_auto,f_auto/v1782318834/Video_Project_7_prjhui.mp4"
             poster="https://res.cloudinary.com/dsjcwxwza/video/upload/so_0/v1782318834/Video_Project_7_prjhui.jpg"
-            autoPlay={isPlaying}
             muted={isMuted}
             playsInline
             preload="auto"
